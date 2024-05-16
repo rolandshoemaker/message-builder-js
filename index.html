@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script src="wasm_exec.js"></script>
+        <script>
+			const go = new Go();
+			WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
+				go.run(result.instance);
+			});
+		</script>
+        <script src="script.js"></script>
+        <style>
+            .container {
+                border: solid;
+            }
+            .container:hover {
+                background-color: aliceblue;
+            }
+            .label {
+                display: inline-block
+            }
+            .value:hover {
+                background-color: cadetblue;
+            }
+            .hex {
+                font-family: monospace;
+                border: solid;
+            }
+        </style>
+    </head>
+    <body onload="init()">
+    </body>
+</html>
